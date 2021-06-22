@@ -1,0 +1,40 @@
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution(object):
+    def __init__(self):
+        self.sum = 0;
+        self.runningSum = 0;
+    
+    def bstToGst(self, root):
+        """
+        :type root: TreeNode
+        :rtype: TreeNode
+        """
+        self.getSum(root)
+        self.constructGst(root, 0)
+        return root
+        
+    def constructGst(self, root, runningSum):
+        # if not root:
+        #     return None;
+        
+        if root.left: self.constructGst(root.left, runningSum)
+        # print("before:   root: " + str(root.val) + " runningSum: " + str(runningSum))
+        preVal = root.val
+        root.val = self.sum - self.runningSum
+        self.runningSum += preVal
+        # print("afte:     root: " + str(root.val) + " runningSum: " + str(runningSum))
+        if root.right: self.constructGst(root.right, runningSum)
+        return root
+        
+    
+    def getSum(self, root):
+        if not root:
+            return 0
+        self.sum += root.val
+        self.getSum(root.left)
+        self.getSum(root.right)

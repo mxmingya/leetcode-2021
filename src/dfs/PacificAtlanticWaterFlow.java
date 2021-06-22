@@ -3,10 +3,14 @@ import java.util.*;
 
 public class PacificAtlanticWaterFlow {
     public List<List<Integer>> pacificAtlantic(int[][] heights) {
+        List<List<Integer>> atlantic = new LinkedList<>();
+        List<List<Integer>> pacific = new LinkedList<>();
+
         return null;
     }
 
-    boolean pacific(int[][] heights, int i, int j, boolean[][] visited) {
-        return false;
+    private void dfs(int[][] heights, int x, int y, List<List<Integer>> res) {
+
     }
+
 }
